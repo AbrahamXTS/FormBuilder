@@ -1,11 +1,18 @@
+"use-client";
+
+import "dayjs/locale/es-mx";
 import { Metadata } from "next";
 import {
   ColorSchemeScript,
   MantineProvider,
   mantineHtmlProps,
 } from "@mantine/core";
+import { DatesProvider } from "@mantine/dates";
+
+import { theme } from "@/configurations";
 
 import "@mantine/core/styles.css";
+import "@mantine/dates/styles.css";
 
 export const metadata: Metadata = {
   title: "Maikron Forms",
@@ -29,7 +36,11 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+          <DatesProvider settings={{ consistentWeeks: true, locale: "es-mx" }}>
+            {children}
+          </DatesProvider>
+        </MantineProvider>
       </body>
     </html>
   );
