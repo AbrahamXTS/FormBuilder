@@ -1,20 +1,17 @@
-import { QuestionType } from "@/types";
 import { Card, Stack, Text, Title } from "@mantine/core";
+
+import { FormHandler, Question } from "@/types";
+
 import { FormAnswerFieldFactory } from "./FormAnswerFieldFactory";
 
 interface FormQuestionProps {
-  title: string;
-  description?: string;
-  questionType: QuestionType;
-  possibleAnswers?: string[];
+  formHandler: FormHandler;
+  question: Question;
 }
 
-export const FormQuestion = ({
-  questionType,
-  title,
-  description,
-  possibleAnswers,
-}: FormQuestionProps) => {
+export const FormQuestion = ({ formHandler, question }: FormQuestionProps) => {
+  const { id, questionType, title, description, possibleAnswers } = question;
+
   return (
     <Card shadow="md" withBorder>
       <Stack>
@@ -23,6 +20,8 @@ export const FormQuestion = ({
         {description && <Text>{description}</Text>}
 
         <FormAnswerFieldFactory
+          formHandler={formHandler}
+          id={id}
           possibleAnswers={possibleAnswers}
           questionType={questionType}
         />

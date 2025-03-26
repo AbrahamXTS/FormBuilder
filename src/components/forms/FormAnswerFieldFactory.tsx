@@ -1,4 +1,4 @@
-import { Question } from "@/types";
+import { FormHandler, Question } from "@/types";
 
 import {
   CheckboxField,
@@ -15,55 +15,37 @@ import {
 } from "./answer-fields";
 
 interface FormAnswerFieldFactoryProps
-  extends Pick<Question, "questionType" | "possibleAnswers"> {}
+  extends Pick<Question, "id" | "questionType" | "possibleAnswers"> {
+  formHandler: FormHandler;
+}
 
 export const FormAnswerFieldFactory = ({
+  formHandler,
+  id,
   questionType,
   possibleAnswers,
 }: FormAnswerFieldFactoryProps) => {
-  if (questionType === "SHORT_ANSWER") {
-    return <ShortAnswerField />;
-  }
+  const formAnswerFields = {
+    SHORT_ANSWER: ShortAnswerField,
+    LONG_ANSWER: LongAnswerField,
+    CHECKBOX: CheckboxField,
+    MULTIPLE_CHOICE: MultipleChoiceField,
+    SELECT: SelectField,
+    UPLOAD_FILE: UploadFileField,
+    LINEAR_SCALE: LinearScaleField,
+    SCORE: ScoreField,
+    DATE: DateField,
+    TIME: TimeField,
+    DATE_TIME: DateTimeField,
+  };
 
-  if (questionType === "LONG_ANSWER") {
-    return <LongAnswerField />;
-  }
+  const AnswerField = formAnswerFields[questionType] || ShortAnswerField;
 
-  if (questionType === "CHECKBOX" && possibleAnswers) {
-    return <CheckboxField possibleAnswers={possibleAnswers} />;
-  }
-
-  if (questionType === "MULTIPLE_CHOICE" && possibleAnswers) {
-    return <MultipleChoiceField possibleAnswers={possibleAnswers} />;
-  }
-
-  if (questionType === "SELECT" && possibleAnswers) {
-    return <SelectField possibleAnswers={possibleAnswers} />;
-  }
-
-  if (questionType === "UPLOAD_FILE") {
-    return <UploadFileField />;
-  }
-
-  if (questionType === "LINEAR_SCALE" && possibleAnswers) {
-    return <LinearScaleField possibleAnswers={possibleAnswers} />;
-  }
-
-  if (questionType === "SCORE" && possibleAnswers) {
-    return <ScoreField possibleAnswers={possibleAnswers} />;
-  }
-
-  if (questionType === "DATE") {
-    return <DateField />;
-  }
-
-  if (questionType === "TIME") {
-    return <TimeField />;
-  }
-
-  if (questionType === "DATE_TIME") {
-    return <DateTimeField />;
-  }
-
-  return <ShortAnswerField />;
+  return (
+    <AnswerField
+      formHandler={formHandler}
+      id={id}
+      possibleAnswers={possibleAnswers!}
+    />
+  );
 };

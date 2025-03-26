@@ -1,15 +1,16 @@
 import { Checkbox, CheckboxGroup, Stack } from "@mantine/core";
 
-import { Question } from "@/types";
+import { AnswerFieldProps } from "./AnswerFieldProps";
 
-interface MultipleChoiceFieldProps
-  extends Required<Pick<Question, "possibleAnswers">> {}
+interface MultipleChoiceFieldProps extends Required<AnswerFieldProps> {}
 
 export const MultipleChoiceField = ({
+  formHandler: form,
+  id,
   possibleAnswers,
 }: MultipleChoiceFieldProps) => {
   return (
-    <CheckboxGroup>
+    <CheckboxGroup key={form.key(id)} {...form.getInputProps(id)}>
       <Stack>
         {possibleAnswers.map((possibleAnswer, index) => (
           <Checkbox

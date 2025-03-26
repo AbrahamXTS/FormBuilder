@@ -1,13 +1,16 @@
 import { Radio, RadioGroup, Stack } from "@mantine/core";
 
-import { Question } from "@/types";
+import { AnswerFieldProps } from "./AnswerFieldProps";
 
-interface CheckboxFieldProps
-  extends Required<Pick<Question, "possibleAnswers">> {}
+interface CheckboxFieldProps extends Required<AnswerFieldProps> {}
 
-export const CheckboxField = ({ possibleAnswers }: CheckboxFieldProps) => {
+export const CheckboxField = ({
+  formHandler: form,
+  id,
+  possibleAnswers,
+}: CheckboxFieldProps) => {
   return (
-    <RadioGroup>
+    <RadioGroup key={form.key(id)} {...form.getInputProps(id)}>
       <Stack>
         {possibleAnswers.map((possibleAnswer, index) => (
           <Radio

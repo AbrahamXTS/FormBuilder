@@ -1,15 +1,16 @@
 import { Group, Radio, RadioGroup } from "@mantine/core";
 
-import { Question } from "@/types";
+import { AnswerFieldProps } from "./AnswerFieldProps";
 
-interface LinearScaleFieldProps
-  extends Required<Pick<Question, "possibleAnswers">> {}
+interface LinearScaleFieldProps extends Required<AnswerFieldProps> {}
 
 export const LinearScaleField = ({
+  formHandler: form,
+  id,
   possibleAnswers,
 }: LinearScaleFieldProps) => {
   return (
-    <RadioGroup>
+    <RadioGroup key={form.key(id)} {...form.getInputProps(id)}>
       <Group>
         {possibleAnswers.map((possibleAnswer, index) => (
           <Radio

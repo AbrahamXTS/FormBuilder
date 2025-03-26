@@ -1,8 +1,20 @@
-import { Question } from "@/types";
 import { Rating } from "@mantine/core";
 
-interface ScoreFieldProps extends Required<Pick<Question, "possibleAnswers">> {}
+import { AnswerFieldProps } from "./AnswerFieldProps";
 
-export const ScoreField = ({ possibleAnswers }: ScoreFieldProps) => {
-  return <Rating count={possibleAnswers.length} size="md" />;
+interface ScoreFieldProps extends Required<AnswerFieldProps> {}
+
+export const ScoreField = ({
+  formHandler: form,
+  id,
+  possibleAnswers,
+}: ScoreFieldProps) => {
+  return (
+    <Rating
+      count={possibleAnswers.length}
+      key={form.key(id)}
+      size="md"
+      {...form.getInputProps(id)}
+    />
+  );
 };

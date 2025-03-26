@@ -1,10 +1,12 @@
-import { Container, Stack } from "@mantine/core";
+"use client";
 
-import { FormHeader, FormQuestion } from "@/components/forms";
-import { Form } from "@/types";
+import { useState } from "react";
+
+import { Form } from "@/components/forms";
+import { Form as FormType } from "@/types";
 
 export default function RespondentFormView() {
-  const FORM_INFORMATION_MOCK: Form = {
+  const [formInformation] = useState<FormType>({
     id: "UUID-0",
     title: "Encuesta sobre hábitos de vida saludable",
     description:
@@ -93,26 +95,7 @@ export default function RespondentFormView() {
         questionType: "DATE_TIME",
       },
     ],
-  };
+  });
 
-  return (
-    <Container my="md">
-      <Stack>
-        <FormHeader
-          title={FORM_INFORMATION_MOCK.title}
-          description={FORM_INFORMATION_MOCK.description}
-        />
-
-        {FORM_INFORMATION_MOCK.questions.map((question) => (
-          <FormQuestion
-            description={question?.description}
-            key={question.id}
-            possibleAnswers={question?.possibleAnswers}
-            questionType={question.questionType}
-            title={question.title}
-          />
-        ))}
-      </Stack>
-    </Container>
-  );
+  return formInformation ? <Form formInformation={formInformation} /> : null;
 }
