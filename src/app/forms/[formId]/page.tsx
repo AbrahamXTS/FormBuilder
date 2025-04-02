@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Form } from "@/components/forms";
+import { Form } from "@/components/view-mode";
 import { Form as FormType } from "@/types";
 
 export default function RespondentFormView() {
