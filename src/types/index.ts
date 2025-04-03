@@ -1,4 +1,5 @@
 export * from "./Answers";
 export * from "./Form";
 export * from "./FormHandler";
+export * from "./FormInEditModeHandler";
 export * from "./Question";

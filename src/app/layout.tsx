@@ -8,11 +8,13 @@ import {
   mantineHtmlProps,
 } from "@mantine/core";
 import { DatesProvider } from "@mantine/dates";
+import { Notifications } from "@mantine/notifications";
 
 import { theme } from "@/configurations";
 
 import "@mantine/core/styles.css";
 import "@mantine/dates/styles.css";
+import "@mantine/notifications/styles.css";
 
 export const metadata: Metadata = {
   title: "Maikron Forms",
@@ -40,6 +42,7 @@ export default function RootLayout({
           <DatesProvider settings={{ consistentWeeks: true, locale: "es-mx" }}>
             {children}
           </DatesProvider>
+          <Notifications />
         </MantineProvider>
       </body>
     </html>
