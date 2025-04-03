@@ -46,7 +46,7 @@ export const LinearScaleField = ({
             <TextInput
               size="xs"
               {...formHandler.getInputProps(
-                `questions.${questionIndex}.possibleAnswers.${possibleAnswerIndex}`
+                `questions.${questionIndex}.possibleAnswers.${possibleAnswerIndex}`,
               )}
             />
           </Stack>

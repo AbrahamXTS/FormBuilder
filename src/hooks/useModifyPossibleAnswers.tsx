@@ -9,13 +9,13 @@ export const useModifyPossibleAnswers = (form: FormInEditModeHandler) => {
 
     form.insertListItem(
       `questions.${questionIndex}.possibleAnswers`,
-      `Opción ${(currentPossibleAnswers?.length ?? 0) + 1}`
+      `Opción ${(currentPossibleAnswers?.length ?? 0) + 1}`,
     );
   };
 
   const removePossibleAnswer = (
     questionIndex: number,
-    possibleAnswerIndex: number
+    possibleAnswerIndex: number,
   ) => {
     if (
       form.getValues().questions[questionIndex].possibleAnswers?.length === 1
@@ -31,7 +31,7 @@ export const useModifyPossibleAnswers = (form: FormInEditModeHandler) => {
 
     form.removeListItem(
       `questions.${questionIndex}.possibleAnswers`,
-      possibleAnswerIndex
+      possibleAnswerIndex,
     );
   };
 

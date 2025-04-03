@@ -33,7 +33,7 @@ export const SelectField = ({
             <TextInput
               w="100%"
               {...formHandler.getInputProps(
-                `questions.${questionIndex}.possibleAnswers.${possibleAnswerIndex}`
+                `questions.${questionIndex}.possibleAnswers.${possibleAnswerIndex}`,
               )}
             />
 
