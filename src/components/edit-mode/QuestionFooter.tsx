@@ -17,7 +17,9 @@ export const QuestionFooter = ({
 
   return (
     <Group gap="xs" justify="space-between">
-      <Button onClick={() => addQuestion()}>Añadir pregunta</Button>
+      <Button onClick={() => addQuestion(questionIndex + 1)}>
+        Añadir pregunta
+      </Button>
 
       <Tooltip label="Eliminar pregunta">
         <ActionIcon

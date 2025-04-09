@@ -3,14 +3,18 @@ import { notifications } from "@mantine/notifications";
 import { FormInEditModeHandler } from "@/types";
 
 export const useModifyForm = (form: FormInEditModeHandler) => {
-  const addQuestion = () => {
-    form.insertListItem(`questions`, {
-      id: new Date().getTime(),
-      title: "Pregunta sin título",
-      description: "Pregunta sin descripción",
-      questionType: "SHORT_ANSWER",
-      possibleAnswers: ["Opción 1"],
-    });
+  const addQuestion = (addOnIndex?: number) => {
+    form.insertListItem(
+      `questions`,
+      {
+        id: new Date().getTime(),
+        title: "Pregunta sin título",
+        description: "Pregunta sin descripción",
+        questionType: "SHORT_ANSWER",
+        possibleAnswers: ["Opción 1"],
+      },
+      addOnIndex,
+    );
   };
 
   const removeQuestion = (questionIndex: number) => {
