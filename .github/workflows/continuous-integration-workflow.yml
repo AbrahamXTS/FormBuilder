@@ -1,4 +1,4 @@
-name: Maikron Forms - Continuous Integration
+name: Form Builder - Continuous Integration
 
 on:
   push:

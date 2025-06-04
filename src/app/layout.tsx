@@ -17,9 +17,9 @@ import "@mantine/dates/styles.css";
 import "@mantine/notifications/styles.css";
 
 export const metadata: Metadata = {
-  title: "Maikron Forms",
+  title: "Form Builder",
   description:
-    "Maikron Forms es una aplicación web diseñada para la creación de formularios dinámicos y el análisis avanzado de respuestas mediante inteligencia artificial. Su objetivo es optimizar la recopilación, procesamiento y evaluación de datos, ofreciendo una experiencia intuitiva y eficiente para diversos sectores.",
+    "Form Builder es una aplicación web diseñada para la creación de formularios dinámicos y el análisis avanzado de respuestas mediante inteligencia artificial. Su objetivo es optimizar la recopilación, procesamiento y evaluación de datos, ofreciendo una experiencia intuitiva y eficiente para diversos sectores.",
   authors: {
     name: "Abraham Espinosa Mendoza",
     url: "mailto:abrahamespinosa3132@gmail.com",
